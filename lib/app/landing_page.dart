@@ -6,7 +6,6 @@ import 'package:timetracker/services/auth.dart';
 
 import 'home_page.dart';
 
-
 class LandingPage extends StatelessWidget {
   LandingPage({@required this.auth});
   final AuthBase auth;

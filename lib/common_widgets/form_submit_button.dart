@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:timetracker/common_widgets/custom_raised_button.dart';
-class SignInButton extends CustomRaisedButton {
-  SignInButton({
+
+
+class FormSubmitButton extends CustomRaisedButton {
+  FormSubmitButton({
     @required String text,
-    Color color,
-    Color textColor,
     VoidCallback onPressed,
-  }) : assert(text != null),
-        super(
+  }) : super(
           child: Text(
             text,
-            style: TextStyle(color: textColor, fontSize: 15.0),
+            style: TextStyle(color: Colors.white, fontSize: 20.0),
           ),
-          color: color,
+          height: 44.0,
+          color: Colors.indigo,
+          borderRadius: 4.0,
           onPressed: onPressed,
         );
 }
