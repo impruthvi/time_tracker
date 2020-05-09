@@ -58,8 +58,6 @@ class PlatformAlertDialog extends PlatFormWidgets {
             child: Text(cancelActionText),
             onPressed: () => Navigator.of(context).pop(false),
           )
-
-
       );
     }
     actiom.add(
