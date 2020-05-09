@@ -1,10 +1,11 @@
 
 import 'dart:io';
-
+import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:timetracker/app/sign_in/validators.dart';
 import 'package:timetracker/common_widgets/form_submit_button.dart';
+import 'package:timetracker/common_widgets/plateform_exception_alert_dialog.dart';
 import 'package:timetracker/common_widgets/platform_alert_dialog.dart';
 import 'package:timetracker/services/auth.dart';
 
@@ -29,6 +30,16 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
   EmailSignInFormType _formType = EmailSignInFormType.signIn;
   bool _submitted = false;
   bool _isLoding = false;
+  @override
+  void dispose(){
+    
+    print('dispose called');
+    _emailFocusNode.dispose();
+    _passwordFocusNode.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   void _submit() async {
     setState(() {
@@ -43,14 +54,13 @@ class _EmailSignInFormState extends State<EmailSignInForm> {
         await auth.createUserWithEmailAndPassword(_email, _password);
       }
       Navigator.of(context).pop();
-    } catch (e) {
+    } on PlatformException catch (e) {
       if(Platform.isIOS){
         print('show cupertinoAlertDialog');
       }else {
-        PlatformAlertDialog(
+        PlatformExceptionAlertDialog(
           title: 'Sigh is fail',
-          content: e.toString(),
-          defaultActionText: 'OK',
+          exception: e,
         ).show(context);
 
       }
