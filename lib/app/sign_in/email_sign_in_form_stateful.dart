@@ -1,9 +1,6 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:timetracker/app/sign_in/validators.dart';
 import 'package:timetracker/common_widgets/form_submit_button.dart';
 import 'package:timetracker/common_widgets/platform_exception_alert_dialog.dart';
