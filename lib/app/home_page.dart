@@ -3,29 +3,25 @@ import 'package:provider/provider.dart';
 import 'package:timetracker/common_widgets/platform_alert_dialog.dart';
 import 'package:timetracker/services/auth.dart';
 
-
-
 class HomePage extends StatelessWidget {
 
-
   Future<void> _signOut(BuildContext context) async {
-    final auth = Provider.of<AuthBase>(context);
     try {
+      final auth = Provider.of<AuthBase>(context);
       await auth.signOut();
     } catch (e) {
       print(e.toString());
     }
   }
 
-  Future<void> _confirmSignOut(BuildContext context)async{
+  Future<void> _confirmSignOut(BuildContext context) async {
     final didRequestSignOut = await PlatformAlertDialog(
-      title: "LogOut",
-      content: "Are you sure that you want to logout",
-      cancelActionText: 'Cancle',
-      defaultActionText: 'LogOut',
-
+      title: 'Logout',
+      content: 'Are you sure that you want to logout?',
+      cancelActionText: 'Cancel',
+      defaultActionText: 'Logout',
     ).show(context);
-    if(didRequestSignOut == true){
+    if (didRequestSignOut == true) {
       _signOut(context);
     }
   }
@@ -44,7 +40,7 @@ class HomePage extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            onPressed: ()=>_confirmSignOut(context),
+            onPressed: () => _confirmSignOut(context),
           ),
         ],
       ),

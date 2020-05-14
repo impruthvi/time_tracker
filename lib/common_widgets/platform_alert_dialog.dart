@@ -1,15 +1,16 @@
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'platform_widgets.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:timetracker/common_widgets/platform_widget.dart';
 
-class PlatformAlertDialog extends PlatFormWidgets {
+
+class PlatformAlertDialog extends PlatformWidget {
   PlatformAlertDialog({
     @required this.title,
     @required this.content,
+    this.cancelActionText,
     @required this.defaultActionText,
-    this.cancelActionText
   })  : assert(title != null),
         assert(content != null),
         assert(defaultActionText != null);
@@ -27,8 +28,8 @@ class PlatformAlertDialog extends PlatFormWidgets {
           )
         : await showDialog<bool>(
             context: context,
+            barrierDismissible: false,
             builder: (context) => this,
-            barrierDismissible: false
           );
   }
 
@@ -51,30 +52,29 @@ class PlatformAlertDialog extends PlatFormWidgets {
   }
 
   List<Widget> _buildActions(BuildContext context) {
-    final actiom = <Widget>[];
-    if(cancelActionText != null){
-      actiom.add(
-          PlatformAlertDialogAction(
-            child: Text(cancelActionText),
-            onPressed: () => Navigator.of(context).pop(false),
-          )
+    final actions = <Widget>[];
+    if (cancelActionText != null) {
+      actions.add(
+        PlatformAlertDialogAction(
+          child: Text(cancelActionText),
+          onPressed: () => Navigator.of(context).pop(false),
+        ),
       );
     }
-    actiom.add(
+    actions.add(
       PlatformAlertDialogAction(
         child: Text(defaultActionText),
         onPressed: () => Navigator.of(context).pop(true),
-      )
+      ),
     );
-    return actiom;
+    return actions;
   }
 }
 
-class PlatformAlertDialogAction extends PlatFormWidgets {
-  PlatformAlertDialogAction({this.onPressed, this.child});
-
-  final VoidCallback onPressed;
+class PlatformAlertDialogAction extends PlatformWidget {
+  PlatformAlertDialogAction({this.child, this.onPressed});
   final Widget child;
+  final VoidCallback onPressed;
 
   @override
   Widget buildCupertinoWidget(BuildContext context) {
