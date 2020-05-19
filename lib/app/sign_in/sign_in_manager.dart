@@ -1,14 +1,12 @@
-import 'dart:async';
 
-import 'package:flutter/foundation.dart';
+
+import 'package:flutter/cupertino.dart';
 import 'package:timetracker/services/auth.dart';
 
-
 class SignInManager {
-  SignInManager({@required this.auth,@required this.isLoading});
+  SignInManager({@required this.auth, @required this.isLoading});
   final AuthBase auth;
   final ValueNotifier<bool> isLoading;
-
 
   Future<User> _signIn(Future<User> Function() signInMethod) async {
     try {

@@ -1,28 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:timetracker/app/sign_in/sign_in_manager.dart';
 import 'package:timetracker/app/sign_in/sign_in_button.dart';
+import 'package:timetracker/app/sign_in/sign_in_manager.dart';
 import 'package:timetracker/app/sign_in/social_sign_in_button.dart';
 import 'package:timetracker/common_widgets/platform_exception_alert_dialog.dart';
 import 'package:timetracker/services/auth.dart';
+
 import 'email_sign_in_page.dart';
 
 
 class SignInPage extends StatelessWidget {
-  const SignInPage({Key key, @required this.manager}) : super(key: key);
+  const SignInPage({
+    Key key,
+    @required this.manager,
+    @required this.isLoading,
+  }) : super(key: key);
   final SignInManager manager;
+  final bool isLoading;
 
   static Widget create(BuildContext context) {
     final auth = Provider.of<AuthBase>(context);
     return ChangeNotifierProvider<ValueNotifier<bool>>(
-      builder: (_)=>ValueNotifier<bool>(false),
-      
+      builder: (_) => ValueNotifier<bool>(false),
       child: Consumer<ValueNotifier<bool>>(
-        builder: (_,isLoading,__)=> Provider<SignInManager>(
-          builder: (_) => SignInManager(auth: auth,isLoading: isLoading),
+        builder: (_, isLoading, __) => Provider<SignInManager>(
+          builder: (_) => SignInManager(auth: auth, isLoading: isLoading),
           child: Consumer<SignInManager>(
-            builder: (context, manager, _) => SignInPage(manager: manager),
+            builder: (context, manager, _) => SignInPage(
+              manager: manager,
+              isLoading: isLoading.value,
+            ),
           ),
         ),
       ),
@@ -75,19 +83,17 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isLoading = Provider.of<ValueNotifier<bool>>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Time Tracker'),
         elevation: 2.0,
       ),
-      body: _buildContent(context, isLoading.value),
-
+      body: _buildContent(context),
       backgroundColor: Colors.grey[200],
     );
   }
 
-  Widget _buildContent(BuildContext context, bool isLoading) {
+  Widget _buildContent(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(16.0),
       child: Column(
@@ -96,7 +102,7 @@ class SignInPage extends StatelessWidget {
         children: <Widget>[
           SizedBox(
             height: 50.0,
-            child: _buildHeader(isLoading),
+            child: _buildHeader(),
           ),
           SizedBox(height: 48.0),
           SocialSignInButton(
@@ -139,7 +145,7 @@ class SignInPage extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader(bool isLoading) {
+  Widget _buildHeader() {
     if (isLoading) {
       return Center(
         child: CircularProgressIndicator(),

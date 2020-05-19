@@ -8,6 +8,7 @@ import 'package:timetracker/services/auth.dart';
 import 'email_sign_in_bloc.dart';
 import 'email_sign_in_model.dart';
 
+
 class EmailSignInFormBlocBased extends StatefulWidget {
   EmailSignInFormBlocBased({@required this.bloc});
   final EmailSignInBloc bloc;
