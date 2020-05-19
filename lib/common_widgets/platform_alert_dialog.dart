@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:timetracker/common_widgets/platform_widget.dart';
 
-
 class PlatformAlertDialog extends PlatformWidget {
   PlatformAlertDialog({
     @required this.title,
