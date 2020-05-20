@@ -2,12 +2,12 @@
 import 'package:meta/meta.dart';
 
 class Job {
-  Job({@required this.name, @required this.ratePerHour,@required this.id });
+  Job({@required this.id, @required this.name, @required this.ratePerHour});
+  final String id;
   final String name;
   final int ratePerHour;
-  final String id;
 
-  factory Job.fromMap(Map<String, dynamic> data,String documentId) {
+  factory Job.fromMap(Map<String, dynamic> data, String documentId) {
     if (data == null) {
       return null;
     }

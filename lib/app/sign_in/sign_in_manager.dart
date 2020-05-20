@@ -1,6 +1,6 @@
+import 'dart:async';
 
-
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:timetracker/services/auth.dart';
 
 class SignInManager {

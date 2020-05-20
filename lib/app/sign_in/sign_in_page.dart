@@ -9,7 +9,6 @@ import 'package:timetracker/services/auth.dart';
 
 import 'email_sign_in_page.dart';
 
-
 class SignInPage extends StatelessWidget {
   const SignInPage({
     Key key,

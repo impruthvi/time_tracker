@@ -7,7 +7,6 @@ import 'package:timetracker/services/auth.dart';
 import 'package:timetracker/services/database.dart';
 
 import 'home/jobs/jobs_page.dart';
-
 class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

@@ -7,7 +7,6 @@ import 'package:timetracker/services/auth.dart';
 
 import 'email_sign_in_change_model.dart';
 
-
 class EmailSignInFormChangeNotifier extends StatefulWidget {
   EmailSignInFormChangeNotifier({@required this.model});
   final EmailSignInChangeModel model;

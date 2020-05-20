@@ -1,5 +1,4 @@
 
-
 import 'package:timetracker/app/sign_in/validators.dart';
 
 enum EmailSignInFormType { signIn, register }

@@ -4,7 +4,6 @@ import 'package:timetracker/services/auth.dart';
 
 import 'email_sign_in_model.dart';
 
-
 class EmailSignInChangeModel with EmailAndPasswordValidators, ChangeNotifier {
   EmailSignInChangeModel({
     @required this.auth,
