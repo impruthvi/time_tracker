@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:timetracker/app/sign_in/email_sign_in_change_model.dart';
 import 'package:timetracker/common_widgets/form_submit_button.dart';
 import 'package:timetracker/common_widgets/platform_exception_alert_dialog.dart';
 import 'package:timetracker/services/auth.dart';
+
+import 'email_sign_in_change_model.dart';
 
 class EmailSignInFormChangeNotifier extends StatefulWidget {
   EmailSignInFormChangeNotifier({@required this.model});
@@ -15,7 +16,8 @@ class EmailSignInFormChangeNotifier extends StatefulWidget {
     return ChangeNotifierProvider<EmailSignInChangeModel>(
       builder: (context) => EmailSignInChangeModel(auth: auth),
       child: Consumer<EmailSignInChangeModel>(
-        builder: (context, model, _) => EmailSignInFormChangeNotifier(model: model),
+        builder: (context, model, _) =>
+            EmailSignInFormChangeNotifier(model: model),
       ),
     );
   }
@@ -25,12 +27,17 @@ class EmailSignInFormChangeNotifier extends StatefulWidget {
       _EmailSignInFormChangeNotifierState();
 }
 
-class _EmailSignInFormChangeNotifierState extends State<EmailSignInFormChangeNotifier> {
+class _EmailSignInFormChangeNotifierState
+    extends State<EmailSignInFormChangeNotifier> {
   final TextEditingController _emailController = TextEditingController();
+
   final TextEditingController _passwordController = TextEditingController();
+
   final FocusNode _emailFocusNode = FocusNode();
+
   final FocusNode _passwordFocusNode = FocusNode();
-  EmailSignInChangeModel get model=>widget.model;
+
+  EmailSignInChangeModel get model => widget.model;
 
   @override
   void dispose() {
@@ -43,7 +50,7 @@ class _EmailSignInFormChangeNotifierState extends State<EmailSignInFormChangeNot
 
   Future<void> _submit() async {
     try {
-      await widget.model.submit();
+      await model.submit();
       Navigator.of(context).pop();
     } on PlatformException catch (e) {
       PlatformExceptionAlertDialog(
@@ -53,7 +60,7 @@ class _EmailSignInFormChangeNotifierState extends State<EmailSignInFormChangeNot
     }
   }
 
-  void _emailEditingComplete( ) {
+  void _emailEditingComplete() {
     final newFocus = model.emailValidator.isValid(model.email)
         ? _passwordFocusNode
         : _emailFocusNode;
@@ -61,7 +68,7 @@ class _EmailSignInFormChangeNotifierState extends State<EmailSignInFormChangeNot
   }
 
   void _toggleFormType() {
-    widget.model.toggleFormType();
+    model.toggleFormType();
     _emailController.clear();
     _passwordController.clear();
   }
@@ -95,7 +102,7 @@ class _EmailSignInFormChangeNotifierState extends State<EmailSignInFormChangeNot
       ),
       obscureText: true,
       textInputAction: TextInputAction.done,
-      onChanged: widget.model.updatePassword,
+      onChanged: model.updatePassword,
       onEditingComplete: _submit,
     );
   }
@@ -120,16 +127,13 @@ class _EmailSignInFormChangeNotifierState extends State<EmailSignInFormChangeNot
 
   @override
   Widget build(BuildContext context) {
-
-
-          return Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisSize: MainAxisSize.min,
-              children: _buildChildren(),
-            ),
-          );
-
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisSize: MainAxisSize.min,
+        children: _buildChildren(),
+      ),
+    );
   }
 }
