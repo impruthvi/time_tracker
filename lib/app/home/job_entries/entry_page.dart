@@ -15,7 +15,7 @@ class EntryPage extends StatefulWidget {
   final Database database;
 
   static Future<void> show({BuildContext context, Database database, Job job, Entry entry}) async {
-    await Navigator.of(context).push(
+    await Navigator.of(context,rootNavigator: true).push(
       MaterialPageRoute(
         builder: (context) =>
             EntryPage(database: database, job: job, entry: entry),
@@ -83,6 +83,7 @@ class _EntryPageState extends State<EntryPage> {
       appBar: AppBar(
         elevation: 2.0,
         title: Text(widget.job.name),
+        centerTitle: true,
         actions: <Widget>[
           FlatButton(
             child: Text(
