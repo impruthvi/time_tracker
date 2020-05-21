@@ -12,26 +12,7 @@ import 'package:timetracker/services/auth.dart';
 import 'package:timetracker/services/database.dart';
 
 class JobsPage extends StatelessWidget {
-  Future<void> _signOut(BuildContext context) async {
-    try {
-      final auth = Provider.of<AuthBase>(context);
-      await auth.signOut();
-    } catch (e) {
-      print(e.toString());
-    }
-  }
 
-  Future<void> _confirmSignOut(BuildContext context) async {
-    final didRequestSignOut = await PlatformAlertDialog(
-      title: 'Logout',
-      content: 'Are you sure that you want to logout?',
-      cancelActionText: 'Cancel',
-      defaultActionText: 'Logout',
-    ).show(context);
-    if (didRequestSignOut == true) {
-      _signOut(context);
-    }
-  }
 
   Future<void> _delete(BuildContext context, Job job) async {
     try {
@@ -50,27 +31,20 @@ class JobsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Jobs'),
+        centerTitle: true,
         actions: <Widget>[
-          FlatButton(
-            child: Text(
-              'Logout',
-              style: TextStyle(
-                fontSize: 18.0,
-                color: Colors.white,
-              ),
+          IconButton(
+            icon: Icon(Icons.add,color: Colors.white,),
+            onPressed: () => EditJobPage.show(
+              context,
+              database: Provider.of<Database>(context),
             ),
-            onPressed: () => _confirmSignOut(context),
-          ),
+      ),
+
         ],
       ),
       body: _buildContents(context),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () => EditJobPage.show(
-          context,
-          database: Provider.of<Database>(context),
-        ),
-      ),
+
     );
   }
 
