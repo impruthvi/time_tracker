@@ -51,4 +51,4 @@
 
 > The data is store in database (Firestore)
 
-> For more details check screenshort folder
+> For more details check screenshots folder
