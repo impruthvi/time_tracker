@@ -36,3 +36,19 @@
 ## How to connect your app with Firebase
 
 >  [click here](https://firebase.google.com/docs/android/setup)
+
+## App Functions
+
+> You Have different way to login
+ 1. Google 
+ 2. Facebook
+ 3. Email
+ 4. Anonymous
+
+> You can add and delete the job entries
+
+> User's details show in profile page
+
+> The data is store in database (Firestore)
+
+> For more details check screenshort folder
