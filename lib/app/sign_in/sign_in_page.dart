@@ -21,10 +21,10 @@ class SignInPage extends StatelessWidget {
   static Widget create(BuildContext context) {
     final auth = Provider.of<AuthBase>(context);
     return ChangeNotifierProvider<ValueNotifier<bool>>(
-      builder: (_) => ValueNotifier<bool>(false),
+      create: (_) => ValueNotifier<bool>(false),
       child: Consumer<ValueNotifier<bool>>(
         builder: (_, isLoading, __) => Provider<SignInManager>(
-          builder: (_) => SignInManager(auth: auth, isLoading: isLoading),
+          create: (_) => SignInManager(auth: auth, isLoading: isLoading),
           child: Consumer<SignInManager>(
             builder: (context, manager, _) => SignInPage(
               manager: manager,

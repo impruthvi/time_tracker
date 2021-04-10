@@ -1,16 +1,38 @@
-# timetracker
+# Time Tracker
 
-A new Flutter application.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Languages and Tools:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- [<img align="left" alt="Visual Studio Code" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/visual-studio-code/visual-studio-code.png" /></br>](https://code.visualstudio.com/)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [<img align="left" alt="Flutter" width="26px" src="https://cdn.discordapp.com/attachments/814784084513521664/815460145382817802/flutter.png" />](https://flutter.dev/?gclid=Cj0KCQiA-OeBBhDiARIsADyBcE5pjDv-hRYSPjELDa1pPyonGcneG6bCuE6FScpy8BriWn1dp_1bz2UaAojrEALw_wcB&gclsrc=aw.ds)</br>
+
+- [<img align="left" alt="Visual Studio Code" width="26px" src="https://cdn.discordapp.com/attachments/814784084513521664/815462176349356042/icons8-firebase-48.png" />](https://firebase.google.com/)</br>
+
+- [<img align="left" alt="Visual Studio Code" width="26px" src="https://cdn.discordapp.com/attachments/814784084513521664/815463941157289994/image9.png" />](https://developer.android.com/studio?gclid=Cj0KCQiA-OeBBhDiARIsADyBcE5-xs_N9j8w--_etF7fiiRiIgbHihV-uYTqaN814HR_tePwW2t4n5kaAjS0EALw_wcB&gclsrc=aw.ds)</br>
+
+- [<img align="left" alt="GitHub" width="26px" src="https://raw.githubusercontent.com/github/explore/78df643247d429f6cc873026c0622819ad797942/topics/github/github.png" />](https://github.com/)</br>
+
+
+## Installation guide
+
+- [Flutter Installation](https://flutter.dev/docs/get-started/install)
+
+## How to run in VS code
+
+1. Open pubspec.yaml file in VS code, click Pub get.
+2. Click Run > Start Without Debugging in the main IDE window, or press Ctrl+F5. The status bar turns orange to show you are in a debug session.
+
+
+## How to run in Android Stdio
+
+1. Click the Play icon in the toolbar, or invoke Run > Run. The bottom Run pane shows logs output.
+
+
+- for more info [click here](https://flutter.dev/docs/development/tools/android-studio)
+
+## How to connect your app with Firebase
+
+>  [click here](https://firebase.google.com/docs/android/setup)

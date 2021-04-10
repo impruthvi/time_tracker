@@ -1,4 +1,3 @@
-import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -7,7 +6,6 @@ import 'package:timetracker/app/sign_in/sign_in_page.dart';
 import 'package:timetracker/services/auth.dart';
 import 'package:timetracker/services/database.dart';
 
-import 'home/jobs/jobs_page.dart';
 class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -23,7 +21,7 @@ class LandingPage extends StatelessWidget {
             return Provider<User>.value(
               value: user,
               child: Provider<Database>(
-                builder: (_) => FirestoreDatabase(uid: user.uid),
+                create: (_) => FirestoreDatabase(uid: user.uid),
                 child: HomePage(),
               ),
             );

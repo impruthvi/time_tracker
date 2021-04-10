@@ -8,6 +8,7 @@ class EmailSignInPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Sign in'),
+        centerTitle: true,
         elevation: 2.0,
       ),
       body: SingleChildScrollView(
